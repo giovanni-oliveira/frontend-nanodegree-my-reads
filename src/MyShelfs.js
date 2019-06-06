@@ -16,6 +16,10 @@ class MyShelfs extends Component {
     this.myBooks = [];
   }
 
+  async componentDidMount() {
+    await this.mountShelfs();
+  }
+
   async mountShelfs() {
     const myBooks = await BooksAPI.getAll(); 
     const addBook = (shelfs, book) => {
@@ -36,10 +40,6 @@ class MyShelfs extends Component {
     this.setState(myShelfs);
   }
 
-  async componentDidMount() {
-    await this.mountShelfs();
-  }
-
   setShelf([books, title]) {
     return (
       <div className="bookshelf">
@@ -48,8 +48,10 @@ class MyShelfs extends Component {
           <ol className="books-grid">
             {books.map(book => (
               <li key={book.id}>
-                {" "}
-                <Book updateShelf={() => this.mountShelfs()} {...book} />
+                <Book 
+                  updateShelf={() => this.mountShelfs()}
+                  {...book}
+                />
               </li>
             ))}
           </ol>
@@ -72,7 +74,10 @@ class MyShelfs extends Component {
         </div>
         <div className="list-books-content">
           {shelfs.map((shelf, index) => (
-            <div key={index}>{this.setShelf(shelf)}</div>
+            <div 
+              key={index}>
+              {this.setShelf(shelf)}
+            </div>
           ))}
         </div>
 

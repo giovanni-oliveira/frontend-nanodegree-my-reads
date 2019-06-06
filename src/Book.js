@@ -15,7 +15,7 @@ class Book extends Component {
   }
 
   render() {
-    const { shelf, id, title, authors = [], imageLinks: { thumbnail = "" } = {} } = this.props;
+    const { shelf, id, title, authors = [], imageLinks: { thumbnail = '' } = {} } = this.props;
     
     return (
       <div className="book">

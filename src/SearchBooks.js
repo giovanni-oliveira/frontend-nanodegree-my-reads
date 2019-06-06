@@ -19,19 +19,27 @@ class SearchBooks extends Component {
   }
 
   async searchBooks({target: searchInput}) { 
-    const query = searchInput.value.trim();   
+    const query = searchInput.value.trim();  
+
     const addBook = result => {
       const searchBooks = Array.isArray(result) ? result : [];
+      const myBooks = this.myBooks;
+      const myBooksLength = myBooks.length;
 
-        this.myBooks.forEach(({id, shelf}) => {
-          searchBooks.forEach(searchBook => {
-            if(id === searchBook.id) {
-              searchBook.shelf = shelf;
-            }
-          });
-        });
+      const addShelf = searchBook => {
+        for (let index = 0; index < myBooksLength; index++) {
+          const myBook = myBooks[index];
+          
+          if(searchBook.id === myBook.id){
+            searchBook.shelf = myBook.shelf;
+            break;
+          }
+        }
 
-        return searchBooks;
+        return searchBook;
+      };
+
+      return searchBooks.map(addShelf);
     }
 
     const searchBooks = query 
