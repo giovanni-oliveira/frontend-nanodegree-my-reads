@@ -5,7 +5,7 @@ Este projeto cria uma estante digital onde é possível pesquisar livros e adici
 * Quero ler
 
 ## Índice
-- [Instruções](#instrucoes)
+- [Instruções](#instruções)
 - [Importante](#importante)
 - [React App](#react-app)
 - [Contribuição](#contribuicao)
